@@ -21,12 +21,10 @@
     "prettier": true,
     "no-use-before-declare": true,
 
-    // Immutability rules
     "no-var-keyword": true,
     "no-parameter-reassignment": true,
     "typedef": [true, "call-signature"],
     "readonly-keyword": true,
-    // "readonly-array": true,
     "no-let": true,
     "no-object-mutation": true
   }
