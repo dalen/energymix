@@ -1,4 +1,7 @@
 // tslint:disable:no-console
+// tslint:disable:no-object-mutation
+// tslint:disable:typedef
+// tslint:disable:strict-boolean-expressions
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -15,16 +18,16 @@ const isLocalhost = Boolean(
     window.location.hostname === '[::1]' ||
     // 127.0.0.1/8 is considered localhost for IPv4.
     window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
+    ) !== null,
 );
 
-export default function register() {
+export default function register(): void {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(
       process.env.PUBLIC_URL!,
-      window.location.toString()
+      window.location.toString(),
     );
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
@@ -47,7 +50,7 @@ export default function register() {
   }
 }
 
-function registerValidSW(swUrl: string) {
+function registerValidSW(swUrl: string): void {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
@@ -100,7 +103,7 @@ function checkValidServiceWorker(swUrl: string) {
     })
     .catch(() => {
       console.log(
-        'No internet connection found. App is running in offline mode.'
+        'No internet connection found. App is running in offline mode.',
       );
     });
 }
