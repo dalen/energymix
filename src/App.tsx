@@ -4,7 +4,77 @@ import './App.css';
 
 const logo = require('./logo.svg');
 
-class App extends React.Component {
+type Data = {
+  readonly industry: Energymix;
+  readonly steelmill: Energymix;
+  readonly petrochemical: Energymix;
+  readonly warnings: string[];
+};
+
+type Energymix = {
+  readonly fossil: number;
+  readonly bio: number;
+  readonly electricity: number;
+};
+
+type Section = {
+  readonly label: string;
+  readonly questions: Question[];
+};
+
+type Question = {
+  readonly label: String;
+  readonly subQuestions: SubQuestion[];
+};
+
+type SubQuestion = {
+  readonly label: string;
+  readonly answer?: number;
+  readonly reducer: (data: Data, answer: number) => Data;
+  readonly validator: (
+    answer: number,
+  ) => { readonly valid: boolean; readonly message?: string };
+};
+
+type State = {
+  readonly sections: Section[];
+};
+
+const data2015: Data = {
+  industry: {
+    fossil: 12,
+    bio: 62,
+    electricity: 50,
+  },
+  steelmill: {
+    fossil: 18,
+    bio: 0,
+    electricity: 0,
+  },
+  petrochemical: {
+    fossil: 35,
+    bio: 0,
+    electricity: 0,
+  },
+};
+
+const sections: Section = {
+  label: 'Industrin',
+  questions: [
+    {
+      label:
+        'Industrin i Sverige förbrukar idag 12 TWh fossila bränslen om året för att få energi.',
+      subQuestions: [
+        {
+          label: 'Hur många TWh vill du ersätta med el',
+          reducer: (data: Data, answer: number) => {},
+        },
+      ],
+    },
+  ],
+};
+
+class App extends React.Component<{}, State> {
   render(): JSX.Element {
     return (
       <div className="App">
