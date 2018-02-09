@@ -30,5 +30,3 @@ class Test extends React.Component<Props, State> {
 }
 
 export default Test;
-
-//        <div>{this.props.svarTill.map(person => <Svar name={person} />)}</div>
