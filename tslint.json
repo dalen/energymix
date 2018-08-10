@@ -2,8 +2,8 @@
   "extends": [
     "tslint-config-airbnb",
     "tslint-immutable",
-    "tslint-config-prettier",
-    "tslint-plugin-prettier"
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
   ],
   "rules": {
     "variable-name": [
@@ -12,20 +12,21 @@
       "check-format",
       "allow-pascal-case"
     ],
+
     "import-name": [
       {
         "react-moment": "Moment",
         "object-dig": "dig"
       }
     ],
+
     "prettier": true,
     "no-use-before-declare": true,
-
     "no-var-keyword": true,
     "no-parameter-reassignment": true,
     "typedef": [true, "call-signature"],
-    "readonly-keyword": true,
     "no-let": true,
-    "no-object-mutation": true
+    "no-object-mutation": true,
+    "no-array-mutation": true
   }
 }
