@@ -3,7 +3,7 @@ import Svar from './Svar';
 
 type Props = {
   readonly name: string;
-  readonly svarTill: ReadonlyArray<string>;
+  readonly svarTill: string[];
 };
 
 type State = {
@@ -22,7 +22,11 @@ class Test extends React.Component<Props, State> {
       <div>
         <h1 onClick={this.handleClick}>Hej hopp säger {this.props.name}</h1>
         {this.state.bool ? (
-          <div>{this.props.svarTill.map(person => <Svar name={person} />)}</div>
+          <div>
+            {this.props.svarTill.map(person => (
+              <Svar name={person} />
+            ))}
+          </div>
         ) : null}
       </div>
     );
